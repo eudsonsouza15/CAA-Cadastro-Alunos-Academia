@@ -3,7 +3,16 @@ import PySimpleGUI as sg
 from os import close
 from datetime import date
 from datetime import datetime
-tema = "Tan Blue"
+
+escolha = ""
+tema = "Dark Amber 5"
+
+if escolha == "Claro":
+    pass
+elif escolha == "Escuro":
+    tema = "Dark Amber 5"
+else:
+    tema = "Tan Blue"
 
 conection = sqlite3.connect('bd.db')
 
