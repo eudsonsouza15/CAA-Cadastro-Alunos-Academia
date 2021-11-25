@@ -134,9 +134,9 @@ while True:
             print("escolha é ====",bd.escolha)
             print("bd tema é ===",bd.tema)
             if bd.escolha == "Claro":
-                bd.tema = "TealMono"
+                bd.tema = "SystemDefault1"
             if bd.escolha == "Escuro":
-                bd.tema = "DarkBlack"
+                bd.tema = "SandyBeach"
             if dadoslidos[0][0] == "Master":
                 # #print("Welcome")
                 janela1.close()
