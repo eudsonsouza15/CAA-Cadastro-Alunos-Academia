@@ -129,6 +129,14 @@ while True:
         else:
             ##print("usurario", valores['nome'])
             ##print("dadoslidos", dadoslidos[0][0])
+            bd.escolha = valores['escolha']
+            print("tema é=====",valores['escolha'])
+            print("escolha é ====",bd.escolha)
+            print("bd tema é ===",bd.tema)
+            if bd.escolha == "Claro":
+                bd.tema = "TealMono"
+            if bd.escolha == "Escuro":
+                bd.tema = "DarkBlack"
             if dadoslidos[0][0] == "Master":
                 # #print("Welcome")
                 janela1.close()

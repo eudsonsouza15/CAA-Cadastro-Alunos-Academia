@@ -5,15 +5,13 @@ from datetime import date
 from datetime import datetime
 
 escolha = ""
-tema = "DarkBlack"
+tema = ""
 
-if escolha == "Claro":
-    pass
-elif escolha == "Escuro":
-    tema = "DarkBlack"
-else:
-    pass
-    #tema = "Tan Blue"
+#if escolha == "Claro":
+#    tema = "TealMono"
+#if escolha == "Escuro":
+#    tema = "DarkBlack"
+
 
 conection = sqlite3.connect('bd.db')
 
