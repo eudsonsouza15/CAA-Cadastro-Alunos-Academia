@@ -112,7 +112,7 @@ def listacritpersonal(critpersonal):
     # print(dadoslidos)
     return dadoslidospersonal
 
-
+#Pesquisa em alunos com criterio
 def pesquisa(pesquisa3):
     c = conection.cursor()
     #c.execute('SELECT * FROM alunos WHERE status = ? ORDER BY nomec', (crit,))
@@ -124,11 +124,21 @@ def pesquisa(pesquisa3):
 
     return dados_lidos
     # select * from usuarios where nomes like '%pedro%'
+#======================================================
+#Pesquisa em planos com criterio
+def pesquisa_plano(pesquisa_plano):
+    c = conection.cursor()    
+    c.execute('select * from planos where nomeplano like ? ORDER BY nomeplano',
+              (pesquisa_plano,) or (""))
+    dados_lidos_pes_plano = c.fetchall()
+    conection.commit()
+    
+    return dados_lidos_pes_plano
+    
+#======================================================    
     
 
 # Pesquisa planos
-
-
 def pesquisaplano():
     c = conection.cursor()
 
@@ -142,7 +152,6 @@ def pesquisaplano():
 
 
 # pesquisaplano()
-
 # lista personal
 def pesquisapersonal():
     c = conection.cursor()
