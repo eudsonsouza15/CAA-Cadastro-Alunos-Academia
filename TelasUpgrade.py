@@ -96,7 +96,7 @@ def ativos():
     layout = [
         [sg.Table(
             key='lido',
-            col_widths=[2, 13, 25, 8, 10, 6, 10, 5, 5, 8,12,25],
+            col_widths=[2, 13, 25, 10, 10, 6, 10, 5, 5, 8,12,23],
             values=dados_lidos,
             headings=["ID", "Data Mov.", "Nome","CPF", "Sexo", "Altura",
                       "Dt Nascimento", "Peso", "IMC", "Status", "Plano", "Personl"],

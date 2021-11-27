@@ -1,5 +1,5 @@
 import sqlite3
-import PySimpleGUI as sg
+#import PySimpleGUI as sg
 from os import close
 from datetime import date
 from datetime import datetime
@@ -321,7 +321,7 @@ def listapersonal():
     conection.commit()
     #print(dadoslidos)    
     return dadoslidos
-listapersonal()
+#listapersonal()
 
 # conta registros com filtros
 
@@ -362,6 +362,6 @@ def lista_cpf(cpf_digitado):
     #print(cpf_retornado)
 
     return cpf_retornado 
-lista_cpf(cpf_retornado) 
+#lista_cpf(cpf_retornado) 
 
 

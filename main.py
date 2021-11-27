@@ -2,9 +2,7 @@ from datetime import datetime
 from datetime import date
 import time
 import bd
-from os import close, replace
 import PySimpleGUI as sg
-from PySimpleGUI.PySimpleGUI import Button, _refresh_debugger
 import TelasCadastros as tc
 import TelasConsulta as tcs
 import TelasMenu as tm
@@ -130,9 +128,9 @@ while True:
             ##print("usurario", valores['nome'])
             ##print("dadoslidos", dadoslidos[0][0])
             bd.escolha = valores['escolha']
-            print("tema é=====",valores['escolha'])
-            print("escolha é ====",bd.escolha)
-            print("bd tema é ===",bd.tema)
+            print("tema é=====", valores['escolha'])
+            print("escolha é ====", bd.escolha)
+            print("bd tema é ===", bd.tema)
             if bd.escolha == "Claro":
                 bd.tema = "SystemDefault1"
             if bd.escolha == "Escuro":
@@ -381,7 +379,7 @@ while True:
             p_plano_alt = tu.status
             p_peso_alt = tu.nomep
             list1 = list(p_peso_alt)
-            #print(list1)
+            # print(list1)
 
             janela4 = tu.janela_cadastro_alt()
     if window == janela4 and eventos == 'alt_cad_aluno':
@@ -572,7 +570,7 @@ while True:
     if window == janela3 and eventos == 'listardadospersonal':
         dados_lidospersonal = bd.pesquisapersonal()
         window.find_element('lidopersonal').Update(dados_lidospersonal)
-        #print(dados_lidospersonal)
+        # print(dados_lidospersonal)
         row_colors = ((0, 'white'))
 
     # LISTA PERSONAL ATIVOS
@@ -645,5 +643,5 @@ while True:
         janela4.close()
         dados_lidospersonal = bd.pesquisapersonal()
         # window.find_element('lidopersonal').Update(dados_lidospersonal)
-        #print(dados_lidospersonal)
+        # print(dados_lidospersonal)
         row_colors = ((0, 'white'))
