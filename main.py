@@ -326,11 +326,17 @@ while True:
             vl_lido = valores['lido']
             soma = sum(vl_lido)
             x_d_lido = dados_lidos
-            y_d_lido = x_d_lido[soma][1]
-            tu.a_peso = y_d_lido
-            tp.msg = "Confirmar alt_alterar exclusão do aluno " + \
+            #print("dadoslidos>>>>>>>>>>>>>>>>>>>>>>>>>",dados_lidos)
+            if x_d_lido != []:
+                y_d_lido = x_d_lido[soma][1]
+                #print("y_d_lido>>>>>>>>>>>>>>>>>>>>>>>>>",y_d_lido)
+                tu.a_peso = y_d_lido
+                tp.msg = "Confirmar alt_alterar exclusão do aluno " + \
                 x_d_lido[soma][2]
-            janela4 = tp.janela_popup_del(tp.msg)
+                janela4 = tp.janela_popup_del(tp.msg)
+            else:
+                tp.msg = "Favor Lista e depois selecionar um Alunoa ser deletado!"
+                janela4 = tp.janela_popup_ok(tp.msg)    
 
     if window == janela4 and eventos == 'SIM':
         bd.deletesel(y_d_lido)
