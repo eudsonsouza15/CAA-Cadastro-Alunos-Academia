@@ -1,0 +1,18 @@
+Procedimento para testa do executavel
+1 - Extraia os arquivo da pasta main.rar, com o winrar
+2 - Execute o arquivo main.exe
+3 - Usuarios;
+*Administrador com acesso total:
+Usuario: ADMIN Senha:1234
+
+*Operador tem direito a inserir e modificar as informações mas não cadastra novos usuarios:
+Usuario:JOSE Senha:12345 
+
+*Leitor somente leiturar dos dados ja inseridos no sistema.
+Usuario:PEDRO Senha:123456 
+
+Obs. para fins de teste o banco de dados encontra-se na mesma pasta do executavel.
+
+Procedimento para ver o codigo fonte
+1 - Extratia os arquivos que estão na pasta codigo_fonte.rar
+2 - Usar o VSCODE ja instalador o python3 para abrir os arquivos

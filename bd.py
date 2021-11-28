@@ -5,7 +5,7 @@ from datetime import date
 from datetime import datetime
 
 escolha = ""
-tema = ""
+tema = "SystemDefault"
 
 #if escolha == "Claro":
 #    tema = "TealMono"
