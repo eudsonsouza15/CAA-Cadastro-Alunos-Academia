@@ -29,8 +29,9 @@ datem = datetime.now().strftime("%d/%m/%Y %H:%M:%S")
 plano = []
 previlegio = ["Leitura", "Escrita"]
 
-
-
+#=================================================================== 
+#$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+#===================================================================
 # Cadastro de aluno
 def janela_cadastro():
     sg.theme(str(bd.tema)) 
@@ -51,7 +52,9 @@ def janela_cadastro():
     ]
     return sg.Window('Cadastro de aluno', layout=cadastros, finalize=True, modal=True,keep_on_top=True)
 
-
+#=================================================================== 
+#$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+#===================================================================
 # Cadastro personal
 def janela_cadastro_personal():
     sg.theme(str(bd.tema)) 
@@ -71,6 +74,9 @@ def janela_cadastro_personal():
     ]
     return sg.Window('Cadastro de Personal', layout=cadastros, finalize=True, modal=True,keep_on_top=True)
 
+#=================================================================== 
+#$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+#===================================================================
 # Tela Cadastro adm
 def janela_cad_admin():
     sg.theme(str(bd.tema)) 
@@ -87,6 +93,9 @@ def janela_cad_admin():
     ]
     return sg.Window('Cadastro de operador', layout=cad_admin, finalize=True, modal=True,keep_on_top=True)
 
+#=================================================================== 
+#$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+#===================================================================
 # Cadastro de plano
 def janela_cad_plano():
     sg.theme(str(bd.tema)) 

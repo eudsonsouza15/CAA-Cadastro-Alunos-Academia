@@ -12,14 +12,18 @@ import TelasUpgrade as tu
 from validate_docbr import CPF
 cpf = CPF()
 
-
+#=================================================================== 
+#$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+#===================================================================
 # VARIAVES JANELAS
 janela1 = tm.janela_login()
 janela2 = None
 janela3 = None
 janela4 = None
 janela5 = None
-
+#=================================================================== 
+#$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+#===================================================================
 
 # FUNÇÕES LIMPA CAMPOS
 def limpaadm():
@@ -70,10 +74,11 @@ def limpaplano():
     window.find_element('nomeplano').Update('')
     window.find_element('codplano').Update('')
 
-# Funções
 
-
-# Loop telas
+#=================================================================== 
+#$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+#===================================================================
+# Loop telas rodando
 while True:
     window, eventos, valores = sg.read_all_windows()
     if window == janela1 and eventos == sg.WIN_CLOSED:
@@ -121,34 +126,26 @@ while True:
         statement = f"SELECT user from admin WHERE user='{valores['nome']}' AND passs = '{valores['senha']}';"
         bd.c.execute(statement)
         if not bd.c.fetchone():
-            ##print("Login failed")
             limpaadm()
             tp.msg = "Dados não conferem, favor tentar novamente"
             janela2 = tp.janela_popup()
 
         else:
-            ##print("usurario", valores['nome'])
-            ##print("dadoslidos", dadoslidos[0][0])
             bd.escolha = valores['escolha']
-            print("tema é=====", valores['escolha'])
-            print("escolha é ====", bd.escolha)
-            print("bd tema é ===", bd.tema)
+            
             if bd.escolha == "Claro":
                 bd.tema = "SystemDefault1"
             if bd.escolha == "Escuro":
                 bd.tema = "SandyBeach"
             if dadoslidos[0][0] == "Master":
-                # #print("Welcome")
                 janela1.close()
                 janela2 = tm.janelamenuadm()
 
             if dadoslidos[0][0] == "Escrita":
-                # #print("Welcome")
                 janela1.close()
                 janela2 = tm.janelamenuescrita()
 
             if dadoslidos[0][0] == "Leitura":
-                # #print("Welcome")
                 janela1.close()
                 janela2 = tm.janelamenueleitura()
     #=================================================================== 
@@ -169,7 +166,6 @@ while True:
         janela3 = tc.janela_cadastro()
 
     if window == janela3 and eventos == 'cad_aluno':
-        # limpacampos()
 
         st_cpf = cpf.validate(str(valores['cpf']))
         if valores['nomec'] == "" or valores['sexo'] == "" or valores['altura'] == "" or valores['datan'] == "" or valores['peso'] == "" or valores['status'] == "" or valores['plano'] == "" or valores['nomep'] == "":
@@ -206,7 +202,6 @@ while True:
                     tp.msg = "Dados Cadastrados com sucesso"
                     janela4 = tp.janela_popup_ok_cadasto()
                 except ValueError:
-                    #print("digite altura valida")
                     tp.msg = "Favor usar aplenas numeros para peso e alturapeso e altura validos"
                     janela4 = tp.janela_popup()
   
@@ -220,7 +215,7 @@ while True:
     #=================================================================== 
     #$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
     #===================================================================
-    # CHAMA CADASTRO PERSONAL
+    # Cadastro de personal
     if window == janela2 and eventos == 'Personal':
         janela3 = tc.janela_cadastro_personal()
 
@@ -238,7 +233,7 @@ while True:
     #=================================================================== 
     #$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
     #===================================================================
-    # CHAMA CADASTRO ADM
+    # Cadastro de Operador
     if window == janela2 and eventos == 'Cadastro User':
         janela3 = tc.janela_cad_admin()
     if window == janela3 and eventos == 'Cadastrarr':
@@ -260,7 +255,7 @@ while True:
     #=================================================================== 
     #$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
     #===================================================================
-    # CHAMA MENU PLANO
+    # Cadastro de plano
     if window == janela2 and eventos == 'Plano':
         janela3 = tc.janela_cad_plano()
 
@@ -275,11 +270,10 @@ while True:
             tp.msg = "Dados Cadastrados com sucesso"
             janela4 = tp.janela_popup()
 
-            # daqui acimi funciona
     #=================================================================== 
     #$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
     #===================================================================
-    # CHAMA MENU ATUALZAÇÕES alunos
+    # Atualizações de alunos
     if window == janela2 and eventos == 'Alunos':
         tu.plano = bd.listaplano()
         tu.nomep = bd.listapersonal()
@@ -293,30 +287,22 @@ while True:
     #=================================================================== 
     #$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
     #===================================================================
-    # CHAMA MENU CONSULTA alunos
+    # Consulta Alunos
     if window == janela2 and eventos == 'Consulta Alunos':
-        tcs.plano = bd.listaplano()
-        tcs.nomep = bd.listapersonal()
-        tcs.plano.append("TODOS")
-        tcs.nomep.append("TODOS")
-        tcs.ret_plano = tcs.plano
-        tcs.ret_personal = tcs.nomep
-        janela3 = tcs.ativos_alunos_consulta()
-        tm.i = 0
+        janela3 = tcs.ativos_consulta()
     #=================================================================== 
     #$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
     #===================================================================    
-        # LISTA TODOS ALUNOS
+    #Lista todos alunos
     if window == janela3 and eventos == 'listardados':
         listado = True
-        # #print(listado)
         dados_lidos = bd.lista()
         window.find_element('lido').Update(dados_lidos)
         row_colors = ((0, 'white'))
     #=================================================================== 
     #$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
     #===================================================================
-        # LISTA ALUNOS ATIVOS
+    #Lista Alunos Ativos
     if window == janela3 and eventos == 'ativos':
         listado = True
         criterio = "ATIVO"
@@ -325,7 +311,7 @@ while True:
     #=================================================================== 
     #$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
     #===================================================================
-        # LISTA ALUNOS INATIVOS
+    #Lsita Alunos inativos
     if window == janela3 and eventos == 'inativos':  # lista alunos inativos
         listado = True
         criterio = "INATIVO"
@@ -334,21 +320,19 @@ while True:
     #=================================================================== 
     #$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
     #===================================================================
-    # DELETA DADOS alunos
+    #Delata Alunos
     if window == janela3 and eventos == 'delete':  # deleta selecionado
 
         if listado == False:
             tp.msg = "Favor Lista e depois selecionar um Alunoa ser deletado!"
             janela4 = tp.janela_popup_ok(tp.msg)
-            ##print("ao fechar",listado)
+            
         else:
             vl_lido = valores['lido']
             soma = sum(vl_lido)
             x_d_lido = dados_lidos
-            #print("dadoslidos>>>>>>>>>>>>>>>>>>>>>>>>>",dados_lidos)
             if x_d_lido != []:
                 y_d_lido = x_d_lido[soma][1]
-                #print("y_d_lido>>>>>>>>>>>>>>>>>>>>>>>>>",y_d_lido)
                 tu.a_peso = y_d_lido
                 tp.msg = "Confirmar alt_alterar exclusão do aluno " + \
                 x_d_lido[soma][2]
@@ -402,11 +386,10 @@ while True:
             stat_alterado = tc.status
             tu.plano = bd.listaplano()
             tu.nomep = bd.listapersonal()
-            # #print(t.nomep)
             p_plano_alt = tu.status
             p_peso_alt = tu.nomep
             list1 = list(p_peso_alt)
-            # print(list1)
+            
 
             janela4 = tu.janela_cadastro_alt()
     if window == janela4 and eventos == 'alt_cad_aluno':
@@ -455,7 +438,7 @@ while True:
     #=================================================================== 
     #$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
     #===================================================================
-    # pesquisa por nome aluno
+    #Pesquisa por nome aluno
     if window == janela3 and eventos == 'bt_pesquisa':
         pesquisa = valores['inp_pesquisa']
         pesquisa2 = "%"
@@ -473,8 +456,7 @@ while True:
     #=================================================================== 
     #$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
     #===================================================================
-    # Filtos alunos      
-
+    # Filtos alunos   
     if window == janela3 and eventos == 'bt_filtro':
         if valores['f_sexo'] == "TODOS":
             valores['f_sexo'] = "%"
@@ -513,16 +495,23 @@ while True:
                 valores['f_status'], valores['f_sexo'], valores['f_imcm'], valores['f_imc'], valores['b_plano'][0], valores['b_personal'][0])
             msg = tm.reg[0][0]
             window.find_element('qdt_reg').Update(tm.reg[0][0])
+
     #=================================================================== 
     #$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
     #===================================================================
-    # Chama atualizações planos
+    #Atualizaçõs Planos
+    if window == janela2 and eventos == 'Consulta Planos':
+        janela3 = tcs.ativosplanos_consulta()
+    #=================================================================== 
+    #$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+    #===================================================================
+    #Atualizaçõs Planos
     if window == janela2 and eventos == 'Planos':
         janela3 = tu.ativosplanos()
     #=================================================================== 
     #$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
     #===================================================================
-        # LISTA TODOS planos
+    #Lista todos os planos
     if window == janela3 and eventos == 'listardadosplano':
 
         dados_lidosplano = bd.pesquisaplano()
@@ -531,7 +520,7 @@ while True:
     #=================================================================== 
     #$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
     #===================================================================
-        # LISTA PLANO ATIVOS
+    #Lista planos ativos
     if window == janela3 and eventos == 'ativosplano':
         critplano = "ATIVO"
         dados_lidosplano = bd.listacritplano(critplano)
@@ -539,7 +528,7 @@ while True:
     #=================================================================== 
     #$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
     #===================================================================
-        # Lista planos Inativos
+    #Lista Planos inativos
     if window == janela3 and eventos == 'inativosplano':
         critplano = "INATIVO"
         dados_lidosplano = bd.listacritplano(critplano)
@@ -550,12 +539,16 @@ while True:
     # Delete plano
     if window == janela3 and eventos == 'deleteplano':  # deleta selecionado
         vl_lido = valores['lidoplano']
-        soma = sum(vl_lido)
-        x_d_lido = dados_lidosplano
-        y_d_lido = x_d_lido[soma][1]
-        tu.a_peso = y_d_lido
-        tp.msg = "Confirmar alt_alterar exclusão do Plano "+x_d_lido[soma][2]
-        janela4 = tp.janela_popup_delplano(tp.msg)
+        if vl_lido != []:
+            soma = sum(vl_lido)
+            x_d_lido = dados_lidosplano
+            y_d_lido = x_d_lido[soma][1]
+            tu.a_peso = y_d_lido
+            tp.msg = "Confirmar alt_alterar exclusão do Plano "+x_d_lido[soma][2]
+            janela4 = tp.janela_popup_delplano(tp.msg)
+        else:
+            tp.msg = "Favor Lista e depois selecionar o plano ser deletado!"
+            janela4 = tp.janela_popup_ok(tp.msg)   
     if window == janela4 and eventos == 'simplano':
         bd.deleteselplano(y_d_lido)
         window = janela3
@@ -569,7 +562,7 @@ while True:
     #=================================================================== 
     #$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
     #===================================================================
-     # Alterar cadastro de PLANOS
+     # Alterar cadastro de planos
     if window == janela3 and eventos == 'alteraplano':  # alterar status
         bd.conection = bd.sqlite3.connect('bd.db')
         bd.c = bd.conection.cursor()
@@ -591,9 +584,6 @@ while True:
         janela5 = tp.janela_popup_uplplano(tp.msg)
     if window == janela5 and eventos == 'simaltplano':
         bd.upl_novoplano(stp, nome_c)
-        ##print("nome_c", nome_c)
-        ##print("u_user", u_user)
-        ##print("stp", stp)
         window = janela3
         janela5.close()
         janela4.close()
@@ -606,7 +596,7 @@ while True:
     #=================================================================== 
     #$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
     #===================================================================
-        # pesquisa por nome plano
+    #Pesquisa por nome plano
     if window == janela3 and eventos == 'bt_pesquisaplano':
         pesquisaPlano = valores['inp_pesquisaplano']
         pesquisa2 = "%"
@@ -624,29 +614,27 @@ while True:
     #=================================================================== 
     #$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
     #=================================================================== 
+    # Consulta personais
+    if window == janela2 and eventos == 'Consulta Personais':
+        janela3 = tcs.ativospersonal_consulta()        
+    #=================================================================== 
+    #$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+    #=================================================================== 
     # Atualizações personais
     if window == janela2 and eventos == 'Personais':
         janela3 = tu.ativospersonal()
     #=================================================================== 
     #$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
     #=================================================================== 
-        # Consula personais
-    if window == janela2 and eventos == 'Consulta Personais':
-        janela3 = tcs.consulta_personal()
-
-    #=================================================================== 
-    #$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
-    #===================================================================
-    # LISTA TODOS PERSONAL
+    # Lista todos os personais
     if window == janela3 and eventos == 'listardadospersonal':
         dados_lidospersonal = bd.pesquisapersonal()
         window.find_element('lidopersonal').Update(dados_lidospersonal)
-        # print(dados_lidospersonal)
         row_colors = ((0, 'white'))
     #=================================================================== 
     #$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
     #=================================================================== 
-    # LISTA PERSONAL ATIVOS
+    # Lista personais ativos
     if window == janela3 and eventos == 'ativospersonal':
         critpersonal = "ATIVO"
         dados_lidospersonal = bd.listacritpersonal(critpersonal)
@@ -654,7 +642,7 @@ while True:
     #=================================================================== 
     #$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
     #===================================================================
-    # LISTA PERSONAL INATIVOS
+    # Lista personais inativos
     if window == janela3 and eventos == 'inativospersonal':
         critpersonal = "INATIVO"
         dados_lidospersonal = bd.listacritpersonal(critpersonal)
@@ -698,18 +686,19 @@ while True:
     #=================================================================== 
     #$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
     #===================================================================
-        # Delete personal
+    # Delete personal
     if window == janela3 and eventos == 'deletepersona':  # deleta personal
         ldpersonal = valores['lidopersonal']
-        soma = sum(ldpersonal)
-        x_d_lido = dados_lidospersonal
-        y_d_lido = x_d_lido[soma][1]
-
-        #print("x_d_lido", x_d_lido)
-        #print("y_d_lido", y_d_lido)
-
-        tp.msg = "Confirmar alt_alterar exclusão do Personal: "+y_d_lido
-        janela4 = tp.janela_popup_delpersonal(tp.msg)
+        if ldpersonal != []:
+            soma = sum(ldpersonal)
+            x_d_lido = dados_lidospersonal
+        
+            y_d_lido = x_d_lido[soma][1]
+            tp.msg = "Confirmar alt_alterar exclusão do Personal: "+y_d_lido
+            janela4 = tp.janela_popup_delpersonal(tp.msg)
+        else:
+            tp.msg = "Favor Lista e depois selecionar o personal ser deletado!"
+            janela4 = tp.janela_popup_ok(tp.msg)   
     if window == janela4 and eventos == 'simpersonal':
         bd.deleteselpersonal(y_d_lido)
         window = janela3
@@ -722,8 +711,26 @@ while True:
         janela4.close()
         dados_lidospersonal = bd.pesquisapersonal()
         # window.find_element('lidopersonal').Update(dados_lidospersonal)
-        # print(dados_lidospersonal)
         row_colors = ((0, 'white'))
     #=================================================================== 
     #$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+    #===================================================================
+    #Pesquisa por nome personal
+    if window == janela3 and eventos == 'bt_pesquisapersonal':
+        pesquisaPersonal = valores['inp_pesquisapersonal']
+        pesquisa2 = "%"
+        pesquisa_personal = pesquisa2 + pesquisaPersonal + pesquisa2
+        dados_lidos_pes_personal = bd.listacrit(pesquisa_personal)
+        dados_lidos_pes_personal = bd.pesquisa_personal(pesquisa_personal)
+        if dados_lidos_pes_personal == []:
+            tp.msg = "sem dados"
+            janela4 = tp.janela_popup()
+        else:
+            window.find_element('lidopersonal').Update(dados_lidos_pes_personal)
+            ld_lidopersonal = dados_lidos_pes_personal[0][1]
+            cond = ld_lidopersonal
+            nv_val_alterarpersonal = valores['talterarpersonal']
+    #=================================================================== 
+    #$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+    #=================================================================== 
       

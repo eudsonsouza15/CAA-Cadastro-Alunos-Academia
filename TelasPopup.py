@@ -7,7 +7,9 @@ import bd
 
 msg = ""
 
-
+#=================================================================== 
+#$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+#===================================================================
 # Popup
 def janela_popup():
     sg.theme(str(bd.tema)) 
@@ -18,7 +20,9 @@ def janela_popup():
 
     return sg.Window('Tela popup', layout=popup, finalize=True, modal=True, keep_on_top=True)
     
-
+#=================================================================== 
+#$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+#===================================================================
 # Popup ok cadastro
 def janela_popup_ok_cadasto():
     sg.theme(str(bd.tema)) 
@@ -29,8 +33,10 @@ def janela_popup_ok_cadasto():
 
     return sg.Window('Tela popup', layout=popup, finalize=True, modal=True, keep_on_top=True)    
 
+#=================================================================== 
+#$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+#===================================================================
 # Popup delete aluno
-
 
 def janela_popup_del(msg):
     sg.theme(str(bd.tema)) 
@@ -41,7 +47,9 @@ def janela_popup_del(msg):
 
     return sg.Window('Tela popup Delete', layout=popupdel, finalize=True, modal=True, keep_on_top=True)
 
-
+#=================================================================== 
+#$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+#===================================================================
 # Popup delete plano
 def janela_popup_delplano(msg):
     sg.theme(str(bd.tema)) 
@@ -53,7 +61,9 @@ def janela_popup_delplano(msg):
 
     return sg.Window('Tela popup Delete', layout=popupdel, finalize=True, modal=True, keep_on_top=True)
 
-
+#=================================================================== 
+#$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+#===================================================================
 # Popup delete personal
 def janela_popup_delpersonal(msg):
     sg.theme(str(bd.tema)) 
@@ -65,7 +75,9 @@ def janela_popup_delpersonal(msg):
 
     return sg.Window('Tela popup Delete', layout=popupdel, finalize=True, modal=True, keep_on_top=True)    
 
-
+#=================================================================== 
+#$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+#===================================================================
 # Popup update aluno
 def janela_popup_upl(msg):
     sg.theme(str(bd.tema)) 
@@ -76,7 +88,9 @@ def janela_popup_upl(msg):
 
     return sg.Window('Tela popup upgrade', layout=pop_upl, finalize=True, modal=True, keep_on_top=True)
 
-
+#=================================================================== 
+#$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+#===================================================================
 # poupup update plano
 def janela_popup_uplplano(msg):
     sg.theme(str(bd.tema)) 
@@ -87,8 +101,10 @@ def janela_popup_uplplano(msg):
     ]
     return sg.Window('Tela popup upgrade plano', layout=pop_upl, finalize=True, modal=True, keep_on_top=True)
 
+#=================================================================== 
+#$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+#===================================================================
 # poupup update personal
-
 
 def janela_popup_uplpersonal(msg):
     sg.theme(str(bd.tema)) 
@@ -99,8 +115,10 @@ def janela_popup_uplpersonal(msg):
     ]
     return sg.Window('Tela popup upgrade personal', layout=pop_upl, finalize=True, modal=True, keep_on_top=True)
 
+#=================================================================== 
+#$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+#===================================================================
 # poupup ok
-
 
 def janela_popup_ok(msg):
     sg.theme(str(bd.tema)) 

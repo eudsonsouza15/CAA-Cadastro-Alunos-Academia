@@ -28,8 +28,9 @@ ret_plano = []
 ret_personal = []
 
 
-
-
+#=================================================================== 
+#$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+#===================================================================
 #Alterar Cadastro personal
 def janela_cad_personal_alt():
     sg.theme(str(bd.tema)) 
@@ -50,6 +51,9 @@ def janela_cad_personal_alt():
     ]
     return sg.Window('Tela Alterar Cadastro de Personal', layout=cadastros, finalize=True, modal=True,keep_on_top=True)
 
+#=================================================================== 
+#$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+#===================================================================
 # Alterar cadastro de planos
 def janela_cad_plano_alt():
     sg.theme(str(bd.tema)) 
@@ -63,10 +67,10 @@ def janela_cad_plano_alt():
     ]
     return sg.Window('Alteração Cadastro de plano', layout=cad_plano, finalize=True, modal=True,keep_on_top=True)
 
-
+#=================================================================== 
+#$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+#===================================================================
 # Tela Altera cadastro aluno
-
-
 def janela_cadastro_alt():
     sg.theme(str(bd.tema)) 
     cadastros = [
@@ -88,7 +92,10 @@ def janela_cadastro_alt():
     return sg.Window('Alteração de Cadastro de Aluno', layout=cadastros, finalize=True, modal=True, keep_on_top=True)
 
 
-
+#=================================================================== 
+#$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+#===================================================================
+#Tela Atualizações Alunos
 def ativos():
     sg.theme(str(bd.tema)) 
     i = ""
@@ -144,9 +151,11 @@ def ativos():
                        resizable=True, size=(0, 0), location=(-1, -1), modal=True)
     window.maximize()
     return window
-    # return sg.Window('Atualizações dos alunos', layout=layout, finalize=True, size=(1100, 670), modal=True)
+    
 
-
+#=================================================================== 
+#$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+#===================================================================
 # Tela Atualizações Planos
 def ativosplanos():
     sg.theme(str(bd.tema)) 
@@ -183,11 +192,12 @@ def ativosplanos():
                        resizable=True, size=(0, 0), location=(-1, -1), modal=True)
     window.maximize()
     return window
-    #return sg.Window('Atualização planos', layout=layout, finalize=True, size=(1100, 550), modal=True)
+    
 
+#=================================================================== 
+#$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+#===================================================================
 # Atualizações Personais
-
-
 def ativospersonal():
     sg.theme(str(bd.tema)) 
     i = ""
@@ -224,4 +234,4 @@ def ativospersonal():
                        resizable=True, size=(0, 0), location=(-1, -1), modal=True)
     window.maximize()
     return window
-    #return sg.Window('Atualização personal', layout=layout, finalize=True, size=(1100, 550), modal=True)
+    
