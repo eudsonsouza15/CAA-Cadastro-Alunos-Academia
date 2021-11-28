@@ -60,11 +60,11 @@ def ativos_consulta():
         [sg.Text('')],
         [sg.Button("Listar Todos", key="listardados", expand_x=True,border_width=3), sg.Button("Ativos", key="ativos", expand_x=True,border_width=3),
          sg.Button("Inativos", key="inativos", expand_x=True,border_width=3), sg.Button(
-            "Delete", key="delete", disabled=True,expand_x=True,border_width=3),
+            "Delete", key="delete", expand_x=True,border_width=3,disabled=True),
          sg.Combo(values=status, size=(10, 30), key='talterar', default_value="ATIVO",readonly=True,disabled=True), sg.Button(
             "Alterar", key='altera', expand_x=True,border_width=3,disabled=True), sg.Input(key='inp_pesquisa'), sg.Button("Pesquisa", key='bt_pesquisa', expand_x=True,border_width=3),
          ],
-        [sg.Text('F i l t r a r  D a d o s======================================================================================================================')],
+        [sg.Text('F i l t r a r  D a d o s===========================================================================================================================================================')],
         [sg.Text('Status'), sg.Combo(("ATIVO", "INATIVO", "TODOS"), default_value="TODOS", size=(8, 30), key='f_status',readonly=True),
          sg.Text('  Sexo'),
          sg.Combo(values=("MASCULINO", "FEMENINO", "TODOS"), default_value="TODOS", size=(
@@ -73,17 +73,17 @@ def ativos_consulta():
              5, 30), default_text=1), sg.Text("  Imc <="),
          sg.Input(key='f_imc', size=(5, 30),
                   default_text=100), sg.Text("  Plano"),
-         sg.Combo(values=ret_plano, key='b_plano', size=(15, 30),
+         sg.Combo(values=ret_plano, key='b_plano', size=(25, 30),
                   default_value="TODOS",readonly=True), sg.Text("  Personal"),
          sg.Combo(values=ret_personal, key='b_personal',
-                  size=(15, 30), default_value="TODOS",readonly=True),
+                  size=(40, 30), default_value="TODOS",readonly=True),
          sg.Button(" Filtrar dados", key='bt_filtro',border_width=3)],
         [sg.Text("Total de Registos da consuta", font=30), sg.Input(
             key='qdt_reg', size=(5, 30), disabled=True, justification='center', font=30)],
 
-        [sg.Text('=====================================================================================================================================')]
+        [sg.Text('=========================================================================================================================================================================')]
     ]
-    window = sg.Window('Atualizações Alunos', layout=layout, finalize=True,
+    window = sg.Window('Consulta Alunos', layout=layout, finalize=True,
                        resizable=True, size=(0, 0), location=(-1, -1), modal=True)
     window.maximize()
     return window
@@ -124,7 +124,7 @@ def ativosplanos_consulta():
          sg.Combo(values=status, size=(10, 30), key='talterarplano', default_value="ATIVO",readonly=True,disabled=True), sg.Button(
             "Alterar", key='alteraplano', expand_x=True,disabled=True), sg.Input(user, key='inp_pesquisaplano'), sg.Button("Pesquisa", key='bt_pesquisaplano', expand_x=True,border_width=3),
          ]]
-    window = sg.Window('Atualização de planos', layout=layout, finalize=True,
+    window = sg.Window('Consulta de planos', layout=layout, finalize=True,
                        resizable=True, size=(0, 0), location=(-1, -1), modal=True)
     window.maximize()
     return window
@@ -166,7 +166,7 @@ def ativospersonal_consulta():
          sg.Combo(values=status, size=(10, 30), key='talterarpersonal', default_value="ATIVO", disabled=True,readonly=True), sg.Button(
             "Alterar", key='alterapersonal', expand_x=False,border_width=3,disabled=True), sg.Input(user, key='inp_pesquisapersonal', disabled=False), sg.Button("Pesquisa", key='bt_pesquisapersonal', expand_x=True, disabled=False,border_width=3),
          ]]
-    window = sg.Window('Atualização de personal', layout=layout, finalize=True,
+    window = sg.Window('Consulta de personal', layout=layout, finalize=True,
                        resizable=True, size=(0, 0), location=(-1, -1), modal=True)
     window.maximize()
     return window

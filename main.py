@@ -134,7 +134,7 @@ while True:
             bd.escolha = valores['escolha']
             
             if bd.escolha == "Claro":
-                bd.tema = "SystemDefault1"
+                bd.tema = "SystemDefault"
             if bd.escolha == "Escuro":
                 bd.tema = "SandyBeach"
             if dadoslidos[0][0] == "Master":
@@ -160,9 +160,17 @@ while True:
         tc.datan = ""
         tc.sexo = ["MASCULINO", "FEMENINO"]
         tc.status = ["ATIVO", "INATIVO"]
-        tc.plano = bd.listaplano()
-        tc.nomep = bd.listapersonal()
 
+        lista_sem_plano = bd.listaplano()
+        resultado_listaplano = [''.join(i) for i in lista_sem_plano]
+        tc.plano = resultado_listaplano            
+
+
+
+        #tc.plano = bd.listaplano()
+        lista_sem_ = bd.listapersonal()
+        resultado_lista = [''.join(i) for i in lista_sem_]
+        tc.nomep = resultado_lista
         janela3 = tc.janela_cadastro()
 
     if window == janela3 and eventos == 'cad_aluno':
@@ -174,13 +182,13 @@ while True:
         elif st_cpf == False:
             new_cpf_one = cpf.generate()  # gera cpf valido
             window.find_element('cpf').Update(new_cpf_one)  # gera cpf valido
-            tp.msg = "Favor colocar um cpf valido"
+            tp.msg = "Favor colocar um cpf valido, para fins de teste caso não preencha o sistema gera um automaticamente"
             janela4 = tp.janela_popup()
 
         else:
 
             if bd.lista_cpf(valores['cpf']) != []:
-                tp.msg = "Ja tem um cadastro com esse CPF"
+                tp.msg = "Ja tem um cadastro com esse CPF, para fins de teste caso não preencha o sistema gera um automaticamente"
                 janela4 = tp.janela_popup()
                 new_cpf_one = cpf.generate()  # gera cpf valido
                 window.find_element('cpf').Update(
@@ -194,9 +202,9 @@ while True:
                     valores['datem'] = tc.datem
 
                     bd.cadastrardados(valores['nomec'].upper(), valores['cpf'], valores['datem'], valores['sexo'].upper(
-                    ), valores['altura'], valores['datan'], valores['peso'], valores['imc'], valores['status'].upper(), valores['plano'][0], valores['nomep'][0])
+                    ), valores['altura'], valores['datan'], valores['peso'], valores['imc'], valores['status'].upper(), valores['plano'], valores['nomep'])
                     bd.cadastrardados_h(valores['nomec'].upper(), valores['cpf'], valores['datem'], valores['sexo'].upper(
-                    ), valores['altura'], valores['datan'], valores['peso'], valores['imc'], valores['status'].upper(), valores['plano'][0], valores['nomep'][0])
+                    ), valores['altura'], valores['datan'], valores['peso'], valores['imc'], valores['status'].upper(), valores['plano'], valores['nomep'])
                     limpacampos()
                     ehNumero = True
                     tp.msg = "Dados Cadastrados com sucesso"
@@ -225,8 +233,8 @@ while True:
             tp.msg = "Favor prencher todos os campos"
             janela4 = tp.janela_popup()
         else:
-            bd.cadastrardados_personal(valores['nomep'].upper().replace(" ", "_"), valores['sexo'].upper(
-            ), valores['altura'].upper(), valores['datan'], valores['peso'], valores['status'].upper())
+            #bd.cadastrardados_personal(valores['nomep'].upper().replace(" ", "_"), valores['sexo'].upper(), valores['altura'].upper(), valores['datan'], valores['peso'], valores['status'].upper())
+            bd.cadastrardados_personal(valores['nomep'].upper(), valores['sexo'].upper(), valores['altura'].upper(), valores['datan'], valores['peso'], valores['status'].upper())
             limpacampospersonal()
             tp.msg = "Dados Cadastrados com sucesso"
             janela4 = tp.janela_popup_ok_cadasto()
@@ -265,7 +273,7 @@ while True:
             janela4 = tp.janela_popup()
         else:
             bd.cadastrarplanos(
-                valores['nomeplano'].upper(), valores['codplano'].upper().replace(" ", "_"), valores['statusplano'].upper())
+                valores['nomeplano'].upper(), valores['codplano'].upper(), valores['statusplano'].upper())
             limpaplano()
             tp.msg = "Dados Cadastrados com sucesso"
             janela4 = tp.janela_popup()
@@ -277,8 +285,20 @@ while True:
     if window == janela2 and eventos == 'Alunos':
         tu.plano = bd.listaplano()
         tu.nomep = bd.listapersonal()
+        #tu.plano.append("TODOS")
+        #tu.nomep.append("TODOS")
+
+        lista_sem_plano = bd.listaplano()
+        resultado_listaplano = [''.join(i) for i in lista_sem_plano]
+        tu.plano = resultado_listaplano
         tu.plano.append("TODOS")
+
+
+        lista_sem_ = bd.listapersonal()
+        resultado_lista = [''.join(i) for i in lista_sem_]
+        tu.nomep = resultado_lista
         tu.nomep.append("TODOS")
+        
         tu.ret_plano = tu.plano
         tu.ret_personal = tu.nomep
         janela3 = tu.ativos()
@@ -289,7 +309,28 @@ while True:
     #===================================================================
     # Consulta Alunos
     if window == janela2 and eventos == 'Consulta Alunos':
+        tcs.plano = bd.listaplano()
+        tcs.nomep = bd.listapersonal()
+        #tu.plano.append("TODOS")
+        #tu.nomep.append("TODOS")
+
+        lista_sem_plano = bd.listaplano()
+        resultado_listaplano = [''.join(i) for i in lista_sem_plano]
+        tcs.plano = resultado_listaplano
+        tcs.plano.append("TODOS")
+
+
+        lista_sem_ = bd.listapersonal()
+        resultado_lista = [''.join(i) for i in lista_sem_]
+        tcs.nomep = resultado_lista
+        tcs.nomep.append("TODOS")
+        
+        tcs.ret_plano = tcs.plano
+        tcs.ret_personal = tcs.nomep
         janela3 = tcs.ativos_consulta()
+        tcs.i = 0
+        listado = False
+        
     #=================================================================== 
     #$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
     #===================================================================    
@@ -384,8 +425,16 @@ while True:
             data_n_alt = tc.datan
             peso_alterado = tc.peso
             stat_alterado = tc.status
-            tu.plano = bd.listaplano()
-            tu.nomep = bd.listapersonal()
+
+            lista_sem_plano = bd.listaplano()
+            resultado_listaplano = [''.join(i) for i in lista_sem_plano]
+            tu.plano = resultado_listaplano
+
+
+            #tu.plano = bd.listaplano()
+            lista_sem_ = bd.listapersonal()
+            resultado_lista = [''.join(i) for i in lista_sem_]
+            tu.nomep = resultado_lista
             p_plano_alt = tu.status
             p_peso_alt = tu.nomep
             list1 = list(p_peso_alt)
@@ -403,8 +452,8 @@ while True:
         data_n_alt = valores['datan_alt']
         peso_alterado = valores['peso_alt']
         stat_alterado = valores['status_alt']
-        p_plano_alt = valores['plano_alt'][0]
-        pers_alterado = valores['nomep'][0]
+        p_plano_alt = valores['plano_alt']
+        pers_alterado = valores['nomep']
 
         p_peso_alt = float(valores['peso_alt'].replace(',', '.'))
         alt_alt = float(valores['altura_alt'].replace(',', '.'))
@@ -461,38 +510,38 @@ while True:
         if valores['f_sexo'] == "TODOS":
             valores['f_sexo'] = "%"
             dados_lidos = bd.listacrit_filtros(
-                valores['f_status'], valores['f_sexo'], valores['f_imcm'], valores['f_imc'], valores['b_plano'][0], valores['b_personal'][0])
+                valores['f_status'], valores['f_sexo'], valores['f_imcm'], valores['f_imc'], valores['b_plano'], valores['b_personal'])
             window.find_element('lido').Update(dados_lidos)
 
         if valores['f_status'] == "TODOS":
             valores['f_status'] = "%"
             dados_lidos = bd.listacrit_filtros(
-                valores['f_status'], valores['f_sexo'], valores['f_imcm'], valores['f_imc'], valores['b_plano'][0], valores['b_personal'][0])
+                valores['f_status'], valores['f_sexo'], valores['f_imcm'], valores['f_imc'], valores['b_plano'], valores['b_personal'])
             window.find_element('lido').Update(dados_lidos)
 
         if valores['b_plano'] == "TODOS":
             valores['b_plano'] = "%"
             dados_lidos = bd.listacrit_filtros(
-                valores['f_status'], valores['f_sexo'], valores['f_imcm'], valores['f_imc'], valores['b_plano'][0], valores['b_personal'][0])
+                valores['f_status'], valores['f_sexo'], valores['f_imcm'], valores['f_imc'], valores['b_plano'], valores['b_personal'])
             window.find_element('lido').Update(dados_lidos)
 
         if valores['b_personal'] == "TODOS":
             valores['b_personal'] = "%"
             dados_lidos = bd.listacrit_filtros(
-                valores['f_status'], valores['f_sexo'], valores['f_imcm'], valores['f_imc'], valores['b_plano'][0], valores['b_personal'][0])
+                valores['f_status'], valores['f_sexo'], valores['f_imcm'], valores['f_imc'], valores['b_plano'], valores['b_personal'])
             window.find_element('lido').Update(dados_lidos)
 
             tm.reg = bd.listacrit_filtros_qtd(
-                valores['f_status'], valores['f_sexo'], valores['f_imcm'], valores['f_imc'], valores['b_plano'][0], valores['b_personal'][0])
+                valores['f_status'], valores['f_sexo'], valores['f_imcm'], valores['f_imc'], valores['b_plano'], valores['b_personal'])
             msg = tm.reg[0][0]
             window.find_element('qdt_reg').Update(tm.reg[0][0])
         else:
             dados_lidos = bd.listacrit_filtros(
-                valores['f_status'], valores['f_sexo'], valores['f_imcm'], valores['f_imc'], valores['b_plano'][0], valores['b_personal'][0])
+                valores['f_status'], valores['f_sexo'], valores['f_imcm'], valores['f_imc'], valores['b_plano'], valores['b_personal'])
             window.find_element('lido').Update(dados_lidos)
 
             tm.reg = bd.listacrit_filtros_qtd(
-                valores['f_status'], valores['f_sexo'], valores['f_imcm'], valores['f_imc'], valores['b_plano'][0], valores['b_personal'][0])
+                valores['f_status'], valores['f_sexo'], valores['f_imcm'], valores['f_imc'], valores['b_plano'], valores['b_personal'])
             msg = tm.reg[0][0]
             window.find_element('qdt_reg').Update(tm.reg[0][0])
 

@@ -128,7 +128,7 @@ def ativos():
          sg.Combo(values=status, size=(10, 30), key='talterar', default_value="ATIVO",readonly=True), sg.Button(
             "Alterar", key='altera', expand_x=True,border_width=3), sg.Input(key='inp_pesquisa'), sg.Button("Pesquisa", key='bt_pesquisa', expand_x=True,border_width=3),
          ],
-        [sg.Text('F i l t r a r  D a d o s======================================================================================================================')],
+        [sg.Text('F i l t r a r  D a d o s===========================================================================================================================================================')],
         [sg.Text('Status'), sg.Combo(("ATIVO", "INATIVO", "TODOS"), default_value="TODOS", size=(8, 30), key='f_status',readonly=True),
          sg.Text('  Sexo'),
          sg.Combo(values=("MASCULINO", "FEMENINO", "TODOS"), default_value="TODOS", size=(
@@ -137,15 +137,15 @@ def ativos():
              5, 30), default_text=1), sg.Text("  Imc <="),
          sg.Input(key='f_imc', size=(5, 30),
                   default_text=100), sg.Text("  Plano"),
-         sg.Combo(values=ret_plano, key='b_plano', size=(15, 30),
+         sg.Combo(values=ret_plano, key='b_plano', size=(25, 30),
                   default_value="TODOS",readonly=True), sg.Text("  Personal"),
          sg.Combo(values=ret_personal, key='b_personal',
-                  size=(15, 30), default_value="TODOS",readonly=True),
+                  size=(40, 30), default_value="TODOS",readonly=True),
          sg.Button(" Filtrar dados", key='bt_filtro',border_width=3)],
         [sg.Text("Total de Registos da consuta", font=30), sg.Input(
             key='qdt_reg', size=(5, 30), disabled=True, justification='center', font=30)],
 
-        [sg.Text('=====================================================================================================================================')]
+        [sg.Text('=========================================================================================================================================================================')]
     ]
     window = sg.Window('Atualizações Alunos', layout=layout, finalize=True,
                        resizable=True, size=(0, 0), location=(-1, -1), modal=True)
