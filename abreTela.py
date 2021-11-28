@@ -16,7 +16,7 @@ import TelasUpgrade as tu
 # janela1 = tc.janela_cadastro() #OK
 # janela1 = tc.janela_cadastro_personal() # OK
 # janela1 = tc.janela_cad_admin() #OK
-# janela1 = tc.janela_cad_plano() #OK
+janela1 = tc.janela_cad_plano() #OK
 # janela1 = tcs.ativos_alunos_consulta() #OK
 # janela1 = tm.janela_login() #OK
 # janela1 = tm.janelamenuadm() #OK
@@ -27,7 +27,7 @@ import TelasUpgrade as tu
 # janela1 = tu.janela_cadastro_alt() #OK
 #janela1 = tu.ativos() #OK
 #janela1 = tu.ativosplanos() #OK
-janela1 = tu.ativospersonal() #OK
+#janela1 = tu.ativospersonal() #OK
 
 
 # Loop telas
