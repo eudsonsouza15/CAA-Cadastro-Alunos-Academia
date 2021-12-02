@@ -125,7 +125,7 @@ def ativos():
         [sg.Button("Listar Todos", key="listardados", expand_x=True,border_width=3), sg.Button("Ativos", key="ativos", expand_x=True,border_width=3),
          sg.Button("Inativos", key="inativos", expand_x=True,border_width=3), sg.Button(
             "Delete", key="delete", expand_x=True,border_width=3),
-         sg.Combo(values=status, size=(10, 30), key='talterar', default_value="ATIVO",readonly=True), sg.Button(
+         sg.Combo(values=status, size=(10, 30), key='talterar', default_value="ATIVO",readonly=True,visible=False), sg.Button(
             "Alterar", key='altera', expand_x=True,border_width=3), sg.Input(key='inp_pesquisa'), sg.Button("Pesquisa", key='bt_pesquisa', expand_x=True,border_width=3),
          ],
         [sg.Text('F i l t r a r  D a d o s===========================================================================================================================================================')],
@@ -185,7 +185,7 @@ def ativosplanos():
         [sg.Button("Listar Todos", key="listardadosplano", expand_x=True,border_width=3), sg.Button("Ativos", key="ativosplano", expand_x=True, disabled=False,border_width=3),
          sg.Button("Inativos", key="inativosplano", expand_x=True, disabled=False,border_width=3), sg.Button(
             "Delete", key="deleteplano", expand_x=True,border_width=3),
-         sg.Combo(values=status, size=(10, 30), key='talterarplano', default_value="ATIVO",readonly=True), sg.Button(
+         sg.Combo(values=status, size=(10, 30), key='talterarplano', default_value="ATIVO",readonly=True,visible=False), sg.Button(
             "Alterar", key='alteraplano', expand_x=True), sg.Input(user, key='inp_pesquisaplano'), sg.Button("Pesquisa", key='bt_pesquisaplano', expand_x=True,border_width=3),
          ]]
     window = sg.Window('Atualização de planos', layout=layout, finalize=True,
@@ -227,7 +227,7 @@ def ativospersonal():
         [sg.Button("Listar Todos", key="listardadospersonal", expand_x=True,border_width=3), sg.Button("Ativos", key="ativospersonal", expand_x=True, disabled=False,border_width=3),
          sg.Button("Inativos", key="inativospersonal", expand_x=True, disabled=False,border_width=3), sg.Button(
             "Delete", key="deletepersona", expand_x=True, disabled=False,border_width=3),
-         sg.Combo(values=status, size=(10, 30), key='talterarpersonal', default_value="ATIVO", disabled=False,readonly=True), sg.Button(
+         sg.Combo(values=status, size=(10, 30), key='talterarpersonal', default_value="ATIVO", disabled=False,readonly=True,visible=False), sg.Button(
             "Alterar", key='alterapersonal', expand_x=False,border_width=3), sg.Input(user, key='inp_pesquisapersonal', disabled=False), sg.Button("Pesquisa", key='bt_pesquisapersonal', expand_x=True, disabled=False,border_width=3),
          ]]
     window = sg.Window('Atualização de personal', layout=layout, finalize=True,

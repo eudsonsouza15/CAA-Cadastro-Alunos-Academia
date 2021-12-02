@@ -494,7 +494,7 @@ while True:
         dados_lidos = bd.listacrit(pesquisa3)
         dados_lidos = bd.pesquisa(pesquisa3)
         if dados_lidos == []:
-            tp.msg = "sem dados"
+            tp.msg = "Sem dados de retorno para sua pesquisa"
             janela4 = tp.janela_popup()
         else:
             window.find_element('lido').Update(dados_lidos)
@@ -657,7 +657,7 @@ while True:
         dados_lidos_pes_plano = bd.listacrit(pesquisa_plano)
         dados_lidos_pes_plano = bd.pesquisa_plano(pesquisa_plano)
         if dados_lidos_pes_plano == []:
-            tp.msg = "sem dados"
+            tp.msg = "Sem dados de retorno para sua pesquisa"
             janela4 = tp.janela_popup()
         else:
             window.find_element('lidoplano').Update(dados_lidos_pes_plano)
@@ -780,7 +780,7 @@ while True:
         dados_lidos_pes_personal = bd.listacrit(pesquisa_personal)
         dados_lidos_pes_personal = bd.pesquisa_personal(pesquisa_personal)
         if dados_lidos_pes_personal == []:
-            tp.msg = "sem dados"
+            tp.msg = "Sem dados de retorno para sua pesquisa"
             janela4 = tp.janela_popup()
         else:
             window.find_element('lidopersonal').Update(
