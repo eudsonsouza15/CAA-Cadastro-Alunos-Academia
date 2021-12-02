@@ -24,7 +24,7 @@ tema = "Claro", "Escuro"
 def janela_login():
     sg.theme("SystemDefault") 
     login = [
-        [sg.Text("Digite seu usuario"), sg.Input(nome, key='nome')],
+        [sg.Text("Digite seu usuario"), sg.Input(nome, key='nome',focus=True)],
         [sg.Text("Digite sua senha  "), sg.Input(senha, key='senha', password_char='*')
          ],[sg.Text("Tema                  "), sg.Combo(default_value="Claro",values=tema, size=(20, 30), key='escolha',readonly=True,expand_x=False)],
          [sg.Text("=====================================================================")],

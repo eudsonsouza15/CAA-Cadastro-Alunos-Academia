@@ -31,6 +31,7 @@ janela5 = None
 def limpaadm():
     window.find_element('senha').Update('')
     window.find_element('nome').Update('')
+    window.find_element('nome').SetFocus()
 
 
 def limpacampos():
