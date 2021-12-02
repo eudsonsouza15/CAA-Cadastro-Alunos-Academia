@@ -59,7 +59,7 @@ def janelamenuadm():
     login = [
         [sg.Menu(menu_def,)],
         #[sg.Output(size=(100, 30))]
-        [sg.Image('Capturar.PNG',expand_x=True, expand_y=True)]
+        [sg.Image('background.png',expand_x=True, expand_y=True)]
     ]
 
     # return sg.Window('Menu Principal', layout=login, finalize=True,size=(1300, 650))
@@ -91,7 +91,7 @@ def janelamenuescrita():
     ]
     login = [
         [sg.Menu(menu_def,)],
-        [sg.Image('Capturar.PNG',expand_x=True, expand_y=True)]
+        [sg.Image('background.png',expand_x=True, expand_y=True)]
     ]
 
     # return sg.Window('Menu Principal', layout=login, finalize=True,size=(1300, 650))
@@ -124,7 +124,7 @@ def janelamenueleitura():
     ]
     login = [
         [sg.Menu(menu_def, )],
-        [sg.Image('Capturar.PNG',expand_x=True, expand_y=True)]
+        [sg.Image('background.png',expand_x=True, expand_y=True)]
     ]
 
     # return sg.Window('Menu Principal', layout=login, finalize=True,size=(1300, 650))

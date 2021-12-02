@@ -1,9 +1,11 @@
 
 Pratica ADS
 
+Recursos necessarios:
+Sistem Operacional Windows
+VSCODE
+
 Procedimentos
-
-
 
 1 - Copie e cole o link abaixo no navegador para Baixar os arquivos:
 https://drive.google.com/file/d/1fG2Sd073GiGzR5kSsuuv_-1-1voDXBAc/view?usp=sharing
