@@ -216,7 +216,7 @@ while True:
 
     if eventos == 'data':
         janela4 = sg.popup_get_date(start_year=1980, month_names=[
-                                    "Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Junho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"])
+                                    "Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"])
         if janela4:
             month, day, year = janela4
             window['datan'].update(f"{day:0>2d}/{month:0>2d}/{year}")
@@ -260,7 +260,7 @@ while True:
                 limpaadmsenha()
                 tp.msg = "Senhas diferentes"
                 janela4 = tp.janela_popup()
-                # daqui acimi funciona
+
     # ===================================================================
     # $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
     # ===================================================================
