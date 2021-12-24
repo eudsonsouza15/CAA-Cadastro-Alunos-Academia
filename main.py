@@ -361,7 +361,7 @@ while True:
     # $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
     # ===================================================================
     # Delata Alunos
-    if window == janela3 and eventos == 'delete':  # deleta o aluno selecionado
+    if window == janela3 and eventos == 'delete':  # deleta o Aluno selecionado
 
         if listado == False:
             tp.msg = "Favor Lista e depois selecionar um Aluno a ser deletado!"
