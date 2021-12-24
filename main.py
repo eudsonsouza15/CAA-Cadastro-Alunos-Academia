@@ -352,7 +352,7 @@ while True:
     # $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
     # ===================================================================
     # Lsita Alunos inativos
-    if window == janela3 and eventos == 'inativos':  # lista alunos inativos
+    if window == janela3 and eventos == 'inativos':  # listar alunos inativos
         listado = True
         criterio = "INATIVO"
         dados_lidos = bd.listacrit(criterio)
@@ -361,7 +361,7 @@ while True:
     # $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
     # ===================================================================
     # Delata Alunos
-    if window == janela3 and eventos == 'delete':  # deleta selecionado
+    if window == janela3 and eventos == 'delete':  # deleta aluno selecionado
 
         if listado == False:
             tp.msg = "Favor Lista e depois selecionar um Aluno a ser deletado!"
